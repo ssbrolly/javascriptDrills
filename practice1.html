@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practice1</title>
+    <style>
+    body {
+        text-align: center;
+    }
+
+    </style>
+</head>
+<body>
+    <div>The Day And Time</div>
+    <div id="date"></div>
+    <div id="time"></div>
+
+    <script>
+        // date and time
+        let today = document.getElementById( "date" );
+        let date = new Date();
+        let day = date.getDate() - 1;
+        let dayList = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+
+        today.innerHTML = "Today is : " + dayList[ day ];
+
+
+        function timeNow() {
+            let time = document.getElementById( "time" );
+            timey = new Date();
+            let hour = timey.getHours();
+            let minutes = timey.getMinutes();
+            let seconds = timey.getSeconds();
+            time.innerHTML = "The Time is : " + hour + " : " + minutes + " : " + seconds;
+            setTimeout( timeNow, 1000);
+        };
+        timeNow()
+
+    </script>
+                
+    
+</body>
+</html>

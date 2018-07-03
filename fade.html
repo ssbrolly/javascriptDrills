@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+       .rotator{
+           position:relative;
+           width:100%;
+           height:600px;
+           overflow:hidden;
+           background-color:black;
+       }
+       .rotator img{
+           position:absolute;
+           left:0px; top:0px;
+           width:100%;
+       }
+
+       .active{
+           opacity:1;
+       }
+       .hide{
+           opacity:0;
+       }
+
+       .animate{
+       	-webkit-transition: all 500ms cubic-bezier(0.050, 0.840, 0.430, 1);
+       	-webkit-transition: all 500ms cubic-bezier(0.050, 0.840, 0.430, 1.020);
+       	-moz-transition: all 500ms cubic-bezier(0.050, 0.840, 0.430, 1.020);
+       	-o-transition: all 500ms cubic-bezier(0.050, 0.840, 0.430, 1.020);
+       	transition: all 500ms cubic-bezier(0.050, 0.840, 0.430, 1.020);
+       }
+   </style>
+</head>
+<body>
+
+
+   <div class="rotator">
+       <img class="hide animate" src="./images/hdspace1.jpg" />
+       <img class="hide animate" src="./images/hdspace2.jpg" />
+       <img class="hide animate" src="./images/hdspace3.jpg" />
+       <img class="hide animate" src="./images/hdspace4.png" />
+       <img class="hide animate" src="./images/hdspace5.png" />
+   </div>
+
+   <script>
+       let rotator = document.querySelector('.rotator');
+       let images = document.querySelectorAll('.rotator img');
+
+       function showImage(index){
+           // first, set all img tag's class names inside the rotator to be 'hidden';
+           images.forEach(function(image,index){
+               image.className = 'hide animate';
+           });
+
+           // second, set the class name of the index's img to be 'active';
+           images[index].className = 'active animate';
+       }
+
+       showImage(0);
+
+   </script>
+
+</body>
+</html>
