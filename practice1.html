@@ -13,30 +13,59 @@
     </style>
 </head>
 <body>
-    <div>The Day And Time</div>
+    <div>The Date, Day And Time</div>
+    <div id="day"></div>
     <div id="date"></div>
     <div id="time"></div>
+    <br />
+    <br />
 
     <script>
         // date and time
-        let today = document.getElementById( "date" );
+
+        let dayToday = document.getElementById( "day" );
+        let dateToday = document.getElementById( "date" );
+        let timeToday = document.getElementById( "time" );
         let date = new Date();
-        let day = date.getDate() - 1;
+        let day = date.getDay();
         let dayList = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+        let todayDate = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear();
 
-        today.innerHTML = "Today is : " + dayList[ day ];
-
+        dayToday.innerHTML = "Today is : " + dayList[ day ];
+        dateToday.innerHTML = month + " / " + todayDate + " / " + year;
 
         function timeNow() {
-            let time = document.getElementById( "time" );
-            timey = new Date();
-            let hour = timey.getHours();
-            let minutes = timey.getMinutes();
-            let seconds = timey.getSeconds();
-            time.innerHTML = "The Time is : " + hour + " : " + minutes + " : " + seconds;
-            setTimeout( timeNow, 1000);
-        };
-        timeNow()
+            let time = new Date();
+            let hours = time.getHours();
+            let minutes = time.getMinutes();
+            let seconds = time.getSeconds();
+            let prepand = ( hours >= 12 )? "Pm" : "Am";
+            hours = ( hours >= 12 )? hours - 12 : hours;
+            if ( hours === 0 && prepand === "Pm" ) {
+                prepand = "Noon";
+            } else if ( hours === 0 && prepand === "Am") {
+                prepand = "Midnight";
+            };
+
+            timeToday.innerHTML = `${ hours } : ${ minutes } : ${ seconds } ${ prepand }`;
+            setTimeout( timeNow, 1000 );
+        }
+        timeNow();
+
+
+
+
+
+
+
+
+// var array = [ "one", "two", "three", "four", "five", "six", "seven", "eight" ];
+// console.log(array);
+// array[2] = 10;
+// // array.splice( 2, 1, 10 );
+// console.log(array);
 
     </script>
                 
